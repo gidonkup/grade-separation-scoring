@@ -1,0 +1,6 @@
+.git/
+.claude/
+.gitignore
+backend/data/*.geojson
+**/__pycache__/
+*.pyc
