@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="he" dir="rtl" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+  <meta charset="utf-8" />
+  <title>הערכת פרויקטי הפרדה מפלסית</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+  <link rel="stylesheet" href="style.css" />
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">PLAM-1214481970-2895</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">2f469cfc-35b1-41fa-98ee-6d872f7dd02a</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://jtmt.sharepoint.com/sites/ModelsDepartment/InformationDivision/_layouts/15/DocIdRedir.aspx?ID=PLAM-1214481970-2895, PLAM-1214481970-2895</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 80" width="40" height="30">
+        <rect x="4" y="5" width="38" height="70" fill="white" rx="2"/>
+        <rect x="68" y="5" width="38" height="70" fill="white" rx="2"/>
+        <ellipse cx="55" cy="40" rx="31" ry="38" fill="#1B3CC0"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <div class="header-title">תחבורה לירושלים</div>
+      <div class="header-subtitle">הערכת פרויקטי הפרדה מפלסית</div>
+    </div>
+  </header>
+
+  <div id="layout">
+    <div id="sidebar">
+      <section>
+        <div class="section-title">1. ציור או העלאת קלט</div>
+        <div class="input-row">
+          <span class="dot dot-project"></span>
+          <span class="input-label">פוליגון הפרויקט</span>
+          <button data-mode="project" class="mode-btn">ציור</button>
+          <label class="upload-btn">העלאה<input type="file" data-target="project" class="file-input" accept=".geojson,.json" hidden /></label>
+        </div>
+        <div class="input-row">
+          <span class="dot dot-crossings"></span>
+          <span class="input-label">מעברי חצייה (אפשר כמה)</span>
+          <button data-mode="crossings" class="mode-btn">ציור</button>
+          <label class="upload-btn">העלאה<input type="file" data-target="crossings" class="file-input" accept=".geojson,.json" hidden /></label>
+        </div>
+        <div class="input-row">
+          <span class="dot dot-road"></span>
+          <span class="input-label">הדרך המרכזית הנחצית</span>
+          <button data-mode="road" class="mode-btn">ציור</button>
+          <label class="upload-btn">העלאה<input type="file" data-target="road" class="file-input" accept=".geojson,.json" hidden /></label>
+        </div>
+        <div class="input-row">
+          <span class="dot dot-walkingWith"></span>
+          <span class="input-label">מסלול הליכה עם התוכנית</span>
+          <button data-mode="walkingWith" class="mode-btn">ציור</button>
+          <label class="upload-btn">העלאה<input type="file" data-target="walkingWith" class="file-input" accept=".geojson,.json" hidden /></label>
+        </div>
+        <div class="input-row">
+          <span class="dot dot-walkingWithout"></span>
+          <span class="input-label">מסלול הליכה בלי התוכנית</span>
+          <button data-mode="walkingWithout" class="mode-btn">ציור</button>
+          <label class="upload-btn">העלאה<input type="file" data-target="walkingWithout" class="file-input" accept=".geojson,.json" hidden /></label>
+        </div>
+        <button id="clear-btn" class="secondary">נקה את כל השרטוטים</button>
+      </section>
+
+      <section>
+        <div class="section-title">2. הגדרות</div>
+        <div id="settings-form"></div>
+      </section>
+
+      <section>
+        <div class="section-title">3. סביבה — קלט ידני</div>
+        <div id="env-manual-form"></div>
+      </section>
+
+      <section>
+        <div class="section-title">4. תכנון — קלט ידני</div>
+        <div id="design-manual-form"></div>
+      </section>
+
+      <section>
+        <button id="calc-btn" class="primary">חשב ציונים</button>
+        <button id="export-btn" class="secondary">ייצוא לאקסל</button>
+        <p id="status-msg"></p>
+      </section>
+
+      <section id="results" hidden>
+        <div class="section-title">תוצאות</div>
+        <div id="results-content"></div>
+      </section>
+    </div>
+
+    <div id="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

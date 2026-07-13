@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Claude Code local session state
+.claude/
+
+# This folder syncs via SharePoint/OneDrive, which occasionally drops
+# "-COMPUTERNAME" conflict-copy files when a sync race happens - junk, not
+# real project content.
+*-GIDON-PC.*
+
+# Generated reference-layer output - regenerate with:
+#   python backend/scripts/build_reference_data.py
+# (kept out of git: derived from data_sources/raw/, and large - see README)
+backend/data/*.geojson
+!backend/data/.gitkeep

@@ -1,0 +1,8 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+geopandas>=0.14
+shapely>=2.0
+pandas>=2.0
+openpyxl>=3.0
+pyogrio>=0.7
+python-multipart>=0.0.9
