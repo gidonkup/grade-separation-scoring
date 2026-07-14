@@ -6,6 +6,7 @@ from fastapi.responses import StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
 from backend import geo
+from backend.auth import basic_auth_middleware
 from backend.config import DEFAULT_SETTINGS, WGS84_CRS
 from backend.export import build_excel
 from backend.layers import get_display_built_up_area, get_display_intersections, get_reference_layers
@@ -16,8 +17,14 @@ from backend.scoring_env import MANUAL_INDICATOR_LABELS as ENV_MANUAL_LABELS
 from backend.scoring_env import score_environment
 
 app = FastAPI(title="Grade-separation project scoring tool")
+app.middleware("http")(basic_auth_middleware)
 
 FRONTEND_DIR = Path(__file__).parent.parent / "frontend"
+
+
+@app.get("/healthz")
+def healthz():
+    return {"status": "ok"}
 
 
 @app.get("/api/settings/defaults")

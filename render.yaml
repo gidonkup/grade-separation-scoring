@@ -4,4 +4,11 @@ services:
     env: docker
     plan: free
     dockerfilePath: ./Dockerfile
-    healthCheckPath: /api/settings/defaults
+    healthCheckPath: /healthz
+    envVars:
+      # sync: false = Render prompts you for the actual value in its dashboard
+      # instead of storing it in this file - required since this repo is public.
+      - key: AUTH_USERNAME
+        sync: false
+      - key: AUTH_PASSWORD
+        sync: false
